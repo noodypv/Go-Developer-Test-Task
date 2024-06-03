@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package storage;
+
+import "google/protobuf/empty.proto";
+
+option  go_package = "github.com/noodypv/tages-go;storagev1";
+
+service Storage {
+  rpc UploadFile (stream UploadFileRequest) returns (UploadFileResponse);
+  rpc DownloadFile (FileMetadataRequest) returns (stream FileResponse);
+  rpc FileData (google.protobuf.Empty) returns (FileDataResponse);
+}
+
+message UploadFileRequest {
+  string name = 1;
+  bytes im_chunk = 2;
+}
+
+message UploadFileResponse {
+  string name = 1;
+}
+
+message FileMetadataRequest {
+  string name = 1;
+}
+
+message FileResponse {
+  bytes chunk = 1;
+}
+
+message FileDataResponse {
+  repeated SingleFileData imageData = 1;
+}
+
+message SingleFileData {
+  string name = 1;
+  optional string upload_time = 2;
+  string update_time = 3;
+}
