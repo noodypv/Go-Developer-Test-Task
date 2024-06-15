@@ -12,7 +12,7 @@ import (
 const (
 	port                    = 8900
 	maxConcurrentRead       = 100
-	maxConcurrentUpDownLoad = 3
+	maxConcurrentUpDownLoad = 10
 	dataPath                = ".\\tmp"
 )
 
