@@ -35,12 +35,9 @@ func (fs *FileStorageService) UploadFileChunk(name string, data []byte) error {
 	if err != nil {
 		return err
 	}
+	defer f.Close()
 
 	if _, err := f.Write(data); err != nil {
-		return err
-	}
-
-	if err := f.Close(); err != nil {
 		return err
 	}
 
@@ -52,6 +49,7 @@ func (fs *FileStorageService) ReadFile(name string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer f.Close()
 
 	bytes, err := io.ReadAll(f)
 	if err != nil {
