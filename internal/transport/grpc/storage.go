@@ -2,14 +2,15 @@ package grpc
 
 import (
 	"context"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/types/known/emptypb"
 	"io"
 	"log"
 	storagev1 "tages-go/api/storage/storage"
 	"tages-go/internal/service"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type serverAPI struct {
